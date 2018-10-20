@@ -1,1 +1,30 @@
-<Button text="login works!" class="btn btn-primary"></Button>
+<StackLayout class="p-20">
+        <Image
+            src="~/images/ns-ng-logo.png"
+            width="200"
+            height="200"
+        ></Image>
+
+        <TextField
+            class="input"
+            [text]="username"
+            hint="Username"
+            autocorrect="false"
+            autocapitalizationType="none"
+            returnKeyType="next"
+        ></TextField>
+
+        <TextField
+            class="input"
+            [text]="password"
+            hint="Password"
+            secure="true"
+            returnKeyType="done"
+        ></TextField>
+
+        <Button
+            text="Sign in"
+            (tap)="login()"
+            class="btn btn-primary"
+        ></Button>
+</StackLayout>
