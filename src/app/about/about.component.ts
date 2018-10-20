@@ -10,10 +10,9 @@ export class AboutComponent implements OnInit {
   public info: string;
 
   constructor() {
-    this.info = "This application is awesome. So is HMR.";
   }
 
   ngOnInit() {
+    this.info = "This application is awesome. So is HMR.";
   }
-
 }
