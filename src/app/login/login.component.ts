@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
             .then(() => {
                 this.router.navigate(["/admin"]);
             })
-            .catch(() => {
-                console.log("Logging in failed...");
+            .catch((e) => {
+                console.log(`Logging in failed. Original error:\n${e}`);
             });
     }
 }

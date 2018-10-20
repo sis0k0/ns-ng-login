@@ -3,6 +3,8 @@ import { AppOptions } from "nativescript-angular/platform-common";
 
 import { AppModule } from "./app/app.module";
 
+import "./livesync-navigation";
+
 let options: AppOptions = {};
 if (module['hot']) {
     const hmrUpdate = require("nativescript-dev-webpack/hmr").hmrUpdate;
