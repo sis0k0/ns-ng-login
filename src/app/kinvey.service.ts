@@ -19,7 +19,7 @@ export class KinveyInitResolver implements Resolve<void> {
         _route: ActivatedRouteSnapshot,
         _state: RouterStateSnapshot,
     ): Promise<void> {
-        console.log("#### Initializing Kinvey SDK...");
+        console.log("#### Initializing Kinvey SDK");
 
         Kinvey.init({
             appKey: this.appKey,
