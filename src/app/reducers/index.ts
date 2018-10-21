@@ -6,12 +6,14 @@ import {
   MetaReducer
 } from '@ngrx/store';
 
-export interface State {
+import * as fromUser from './user.reducer';
 
+export interface State {
+  user: fromUser.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-
+  user: fromUser.reducer,
 };
 
 
