@@ -7,7 +7,7 @@ import { AboutComponent } from "./about/about.component";
 import { LoginComponent } from "./login/login.component";
 import { AdminComponent } from "./admin/admin.component";
 import { AuthGuard } from "./auth.guard";
-import { KinveyInitResolver } from "./kinvey.service";
+import { KinveyService } from "./kinvey.service";
 
 const routes: Routes = [
     {
@@ -18,7 +18,7 @@ const routes: Routes = [
     {
         path: "home", component: HomeComponent,
         resolve: {
-            _: KinveyInitResolver,
+            _: KinveyService,
         }
     },
     { path: "about", component: AboutComponent },

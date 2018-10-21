@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-import { UserService } from './user.service';
 import { AlertService } from './alert.service';
+import { SessionQuery } from './state/session.query';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
     constructor(
-        private userService: UserService,
+        private sessionQuery: SessionQuery,
         private alertService: AlertService,
     ) {
     }
 
-    canActivate( _next: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
+    canActivate(_next: ActivatedRouteSnapshot, _state: RouterStateSnapshot): boolean {
         const isAuth = this.isAuthenticated();
         if (!isAuth) {
             this.alertService.show("You are not logged in!");
@@ -24,7 +24,6 @@ export class AuthGuard implements CanActivate {
     }
 
     private isAuthenticated() {
-        const user =  this.userService.getCurrentUser();
-        return !!user;
+        return this.sessionQuery.isLoggedIn();
     }
 }
