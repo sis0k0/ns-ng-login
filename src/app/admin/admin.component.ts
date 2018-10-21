@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+
+import { SessionQuery } from '../state/session.query';
 
 @Component({
   selector: 'ns-admin',
@@ -10,11 +11,11 @@ import { UserService } from '../user.service';
 export class AdminComponent implements OnInit {
   public message: string;
 
-  constructor(private userService: UserService) {
+  constructor(private sessionQuery: SessionQuery) {
   }
 
   ngOnInit() {
-    const user = this.userService.getCurrentUser();
+    const user = this.sessionQuery.getCurrentUser();
     this.message = `Whoa! Look who's here: ${user.username}`;
   }
 }
