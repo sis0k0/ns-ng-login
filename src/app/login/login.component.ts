@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService, LoginData } from '../user.service';
 import { Router } from '@angular/router';
+
+import { SessionStore } from '../state/session.store';
+import { LoginData } from '../state/login-data.model';
 
 @Component({
     selector: 'ns-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
     public username: string;
     public password: string;
 
-    constructor(private userService: UserService, private router: Router) {
+    constructor(private sessionStore: SessionStore, private router: Router) {
     }
 
     ngOnInit() {
@@ -22,7 +24,7 @@ export class LoginComponent implements OnInit {
 
     login() {
         const user = new LoginData(this.username, this.password);
-        this.userService.login(user)
+        this.sessionStore.login(user)
             .then(() => {
                 this.router.navigate(["/admin"]);
             })

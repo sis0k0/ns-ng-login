@@ -15,7 +15,8 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    const user = this.sessionQuery.getCurrentUser();
-    this.message = `Whoa! Look who's here: ${user.username}`;
+    this.sessionQuery.user$.subscribe(user => {
+      this.message = `Whoa! Look who's here: ${user.username}`;
+    });
   }
 }

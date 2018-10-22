@@ -3,7 +3,8 @@ import { AppOptions } from "nativescript-angular/platform-common";
 
 import { AppModule } from "./app/app.module";
 
-import "./livesync-navigation";
+import persistState from "./persist-state";
+persistState();
 
 let options: AppOptions = {};
 if (module['hot']) {

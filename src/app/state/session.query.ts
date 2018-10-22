@@ -7,12 +7,16 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class SessionQuery extends Query<SessionState> {
+    user$ = this.select(session => session.user);
+
     constructor(protected store: SessionStore) {
         super(store);
     }
 
     isLoggedIn() {
-        return toBoolean(this.getCurrentUser());
+        const isLoggedIn = toBoolean(this.getCurrentUser());
+
+        return isLoggedIn;
     }
 
     getCurrentUser() {

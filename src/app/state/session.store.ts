@@ -1,7 +1,10 @@
 
 import { Store, StoreConfig } from '@datorama/akita';
-import { User } from '../user.service';
 import { Injectable } from '@angular/core';
+
+import { KinveyService } from '../kinvey.service';
+import { User } from './user.model';
+import { LoginData } from './login-data.model';
 
 export interface SessionState { 
     user: User | null;
@@ -23,13 +26,19 @@ export function createSession(user: User) {
 @StoreConfig({ name: 'session' })
 export class SessionStore extends Store<SessionState> {
 
-    constructor() {
+    constructor(private kinveyService: KinveyService) {
         super(createInitialState());
     }
 
-    login(data: User) {
-        const user = createSession(data);
-        this.update({ user });
+    login(data: LoginData) {
+        return new Promise((resolve, reject) => {
+            this.kinveyService.logIn(data)
+                .then(user => {
+                    this.update({ user });
+                    return resolve(user);
+                })
+                .catch(reject);
+        });
     }
 
     logout() {
