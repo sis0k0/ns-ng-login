@@ -1,29 +1,28 @@
-# NativeScript Angular Template
+# NativeScript Angular Login HMR Demo
 
-This template creates a "Hello, world" NativeScript app using TypeScript and Angular.
+This application contains a simple login form with a [Kinvey](https://devcenter.kinvey.com/nativescript/guides/getting-started) backend and state management with [Akita](https://github.com/datorama/akita). You can use it with HMR. It works pretty well.
 
-You can create a new app that uses this template with either the `--template` option.
+## Setup
 
-```
-tns create my-app-name --template tns-template-hello-world-ng
-```
-
-Or the `--ng` shorthand.
+1. Install the dependencies
 
 ```
-tns create my-app-name --ng
+npm i
 ```
 
-> Note: Both commands will create a new NativeScript app that uses the latest version of this template published to [npm] (https://www.npmjs.com/package/tns-template-hello-world-ng).
-
-If you want to create a new app that uses the source of the template from the `master` branch, you can execute the following:
+2. Install NativeScript CLI 5.0. Or NativeScript CLI rc if you are reading this before Nov, 2019.
 
 ```
-tns create my-app-name --template https://github.com/NativeScript/template-hello-world-ng.git#master
+npm i -g nativescript@rc
 ```
 
-**NB:** Please, have in mind that the master branch may refer to dependencies that are not on NPM yet!
+3. Run the preview command
 
-# Issues
+```
+tns preview --hmr
+```
 
-Issues related to `template-hello-world-ng` template should be logged in the https://github.com/NativeScript/NativeScript repository.
+4. Follow the instructions printed by the command. You will need a mobile device and the NativeScript Preview app installed on it.
+
+5. Play around, change code, see the HMR magic.
+
