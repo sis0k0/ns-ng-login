@@ -1,7 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
-import { LoginData } from "./user.service";
+
+import { LoginData } from "./state/login-data.model";
+import { User } from "./state/user.model";
 
 @Injectable({
     providedIn: "root"
@@ -36,23 +38,16 @@ export class KinveyService implements Resolve<void> {
         return this.logOut();
     }
 
-    public logIn(data: LoginData): Promise<Kinvey.User> {
+    public logIn(data: LoginData): Promise<User> {
         return new Promise((resolve, reject) => {
-            console.log("loggin out ...")
             Kinvey.User.logout()
                 .then(() => {
-                    console.log("logged out, now logging in..")
                     const { username, password } = data;
                     Kinvey.User.login(username, password)
                         .then((user) => {
-                            console.log('logged in..')
-                            console.log(user)
-                            return user;
+                            return resolve(user.data as User);
                         })
-                        .catch((e) => {
-                            console.dir(e);
-                            return reject(e);
-                        })
+                        .catch(reject);
                 })
                 .catch(reject)
         });
