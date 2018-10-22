@@ -16,8 +16,10 @@ export default function persistState() {
             console.log(`Caching the current route: ${cachedRoute}`);
 
             const session = <SessionQuery>moduleRef.injector.get(SessionQuery);
-            cachedSession = session.getSnapshot();
-            console.log(`Caching the current session for ${cachedSession.user.username}`);
+            if (session) {
+              cachedSession = session.getSnapshot();
+              console.log(`Caching the current session`);
+            }
         }
     });
 
@@ -29,7 +31,7 @@ export default function persistState() {
 
         const session = <SessionStore>moduleRef.injector.get(SessionStore);
         if (session && cachedSession) {
-            console.log(`Restoring the cached user session: ${cachedSession.user.username}`);
+            console.log(`Restoring the cached user session`);
             session.update(cachedSession);
         }
 
