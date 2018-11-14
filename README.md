@@ -10,17 +10,17 @@ This application contains a simple login form with a [Kinvey](https://devcenter.
 npm i
 ```
 
-2. Install NativeScript CLI 5.0. Or NativeScript CLI rc if you are reading this before Nov, 2018.
+2. Install the latest NativeScript CLI globally.
 
 ```
-npm i -g nativescript@rc
+npm i -g nativescript@latest
 ```
 
 3. Run the application
 
 ```
 tns run android --hmr
+// or
+tns preview --hmr
 ```
-
-> Note: The `tns run android --hmr` command will start working when NativeScript 5.0 is officially released.
 
